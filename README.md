@@ -1,68 +1,36 @@
-# Beginner GitHub CLI Workshop
+# Workshop Track
 
-A hands-on workshop repository for learning and practicing GitHub CLI workflows.
+This is the short version of the course. Use it when you want a simple live workshop path built around the bookshop example in `workshop/samples/book-app-project/`.
 
-This repo is structured as guided workshop material with chapters, sample content, reusable skills, and agent examples to help beginners get comfortable with GitHub CLI usage in realistic scenarios.
+## How To Use This Workshop
 
-## Repository Structure
+1. Start with [Chapter 00](./chapters/00-quick-start.md).
+2. Move through the chapter files in order.
+3. Keep the focus on the follow-along steps.
+4. Use the same bookshop example throughout: `workshop/samples/book-app-project/`.
 
-```text
-workshop/
-├─ README.md         # Workshop-specific instructions
-├─ agents/           # Agent-related examples or configurations
-├─ assets/           # Images and supporting workshop resources
-├─ chapters/         # Step-by-step workshop modules
-├─ samples/          # Example files/projects used in exercises
-└─ skills/           # Reusable workshop skills and snippets
-```
+## Workshop Resources Included
 
-## Getting Started
+- `workshop/samples/book-app-project/` - sample project used in prompts
+- `workshop/assets/` - images used by workshop chapters
+- `workshop/agents/python-reviewer.agent.md` - local agent example
+- `workshop/skills/code-checklist/` - local skill example
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/sharanyaskonandur/beginner-github-cli-workshop.git
-   cd beginner-github-cli-workshop
-   ```
+## Chapter Examples
 
-2. Open the workshop guide:
-   - Start with `workshop/README.md`
-   - Then move through content in `workshop/chapters/`
+- [00 - Quick Start](./chapters/00-quick-start.md)
+- [01 - First Steps](./chapters/01-setup-and-first-steps.md)
+- [02 - Context and Conversations](./chapters/02-context-conversations.md)
+- [03 - Development Workflows](./chapters/03-development-workflows.md)
+- [04 - Agents and Custom Instructions](./chapters/04-agents-custom-instructions.md)
+- [05 - Skills](./chapters/05-skills.md)
+- [06 - MCP Servers](./chapters/06-mcp-servers.md)
+- [07 - Putting It All Together](./chapters/07-putting-it-together.md)
 
-## Prerequisites
+## Short Example
 
-Before starting, make sure you have:
+If you want to see how the workshop is organized, open [Chapter 00](./chapters/00-quick-start.md) first. That page shows the short workshop style for the bookshop example, and the other chapter pages follow the same pattern.
 
-- A GitHub account
-- Git installed
-- [GitHub CLI (`gh`)](https://cli.github.com/) installed and authenticated
+## Goal
 
-Authenticate (if needed):
-```bash
-gh auth login
-```
-
-## Learning Goals
-
-By the end of this workshop, learners should be able to:
-
-- Navigate and use core GitHub CLI commands
-- Work with repositories, branches, and pull requests via CLI
-- Explore practical workflows using provided chapter content and samples
-- Understand how skills/agents can support CLI-driven development tasks
-
-## Suggested Flow
-
-1. Read `workshop/README.md`
-2. Complete chapters in order under `workshop/chapters/`
-3. Use examples in `workshop/samples/`
-4. Explore advanced material in `workshop/skills/` and `workshop/agents/`
-
-## Contributing
-
-Contributions are welcome! If you’d like to improve workshop content:
-
-1. Fork the repo
-2. Create a feature branch
-3. Commit your changes
-4. Open a pull request
-
+The workshop helps participants follow the course quickly without reading the full chapter version first, while staying on the same local bookshop example throughout.

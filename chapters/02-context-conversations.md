@@ -2,6 +2,8 @@
 
 ![Chapter 02: Context and Conversations](../assets/ch02-header.png)
 
+![Context window visualization](../assets/context-window-visualization.png)
+
 ## What You Will Do
 
 Show Copilot the right files and continue the same session instead of starting over.
@@ -17,7 +19,6 @@ By the end of this chapter, you should know how to give Copilot useful context a
 Use the book app sample as your practice example: `workshop/samples/book-app-project/`.
 
 ## New to Context? Start Here!
-![Context window visualization](../assets/context-window-visualization.png)
 
 1. Start one named session: `copilot --name=context-demo`.
 2. Ask one single-file question first.

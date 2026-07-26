@@ -1,12 +1,10 @@
 # 05 - Skills
 
-![How skills work](../../05-skills/assets/how-skills-work.png)
+![How skills work](../assets/how-skills-work.png)
 
 ## What You Will Do
 
 See how skills automate repeatable checks so you do not have to restate the same rules.
-
-## What This Chapter Covers
 
 In this chapter, you will run a skill-based prompt, compare it with a normal prompt, and see how skills keep checks consistent.
 
@@ -16,11 +14,13 @@ By the end of this chapter, you should know how skills help keep answers consist
 
 ## Follow Along
 
-1. Try a built-in skill.
-2. Trigger a skill from a prompt.
-3. Compare skills with agents.
-4. Find where skills are stored.
-5. Discuss how a team can share them.
+Use the book app sample as your practice example: `workshop/samples/book-app-project/`.
+
+1. Run this command to see built-in skills: `/skills list`
+2. If needed, load the local workshop skill first: `Copy-Item workshop/skills/code-checklist .github/skills/code-checklist -Recurse -Force`. Then run this skill prompt: `Review @workshop/samples/book-app-project/books.py using the code-checklist skill.`
+3. Run this prompt: `Compare a skill-based review and an agent-based review in one paragraph.`
+4. Run this prompt: `Where are skills stored in this project?`
+5. Run this prompt: `How can a team share skills across projects?`
 
 ## How To Follow Along
 
@@ -28,16 +28,6 @@ By the end of this chapter, you should know how skills help keep answers consist
 - Try the same prompt again without the skill if time allows.
 - Compare the answers side by side.
 - Look for checklist-style feedback and repeated standards.
-
-## Try These Prompts
-
-```text
-Review @samples/book-app-project/books.py using the code-checklist skill.
-```
-
-```text
-List the available skills.
-```
 
 ## Your Practice Step
 

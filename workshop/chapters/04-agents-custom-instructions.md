@@ -1,12 +1,10 @@
 # 04 - Agents and Custom Instructions
 
-![Using agents](../../04-agents-custom-instructions/assets/using-agents.png)
+![Using agents](../assets/using-agents.png)
 
 ## What You Will Do
 
 See how a specialist agent changes the style and consistency of the answer.
-
-## What This Chapter Covers
 
 In this chapter, you will compare a general prompt with a specialist agent and see how custom instructions change the result.
 
@@ -16,11 +14,13 @@ By the end of this chapter, you should understand when to use a specialist agent
 
 ## Follow Along
 
-1. Use a generic Copilot prompt first.
-2. Use the Python reviewer agent next.
-3. Compare the two answers.
-4. Explain where custom instructions live.
-5. Discuss how a team can reuse the same setup.
+Use the book app sample as your practice example: `workshop/samples/book-app-project/`.
+
+1. Run this generic prompt first: `Review @workshop/samples/book-app-project/books.py`
+2. If needed, load the local workshop agent file first: `Copy-Item workshop/agents/python-reviewer.agent.md .github/agents/python-reviewer.agent.md`. Then run `/agent`, select `python-reviewer`, and run: `Review @workshop/samples/book-app-project/books.py`
+3. Run this prompt: `Compare the generic review and python-reviewer review in a short table.`
+4. Run this prompt: `Where do custom instructions live in this project?`
+5. Run this prompt: `How can a team share and reuse this same agent setup?`
 
 ## How To Follow Along
 
@@ -28,16 +28,6 @@ By the end of this chapter, you should understand when to use a specialist agent
 - Run the specialist prompt second.
 - Read both answers before moving on.
 - Notice which answer is more specific and repeatable.
-
-## Try These Prompts
-
-```text
-Review @samples/book-app-project/books.py
-```
-
-```text
-Use the python-reviewer agent to review @samples/book-app-project/books.py
-```
 
 ## Your Practice Step
 

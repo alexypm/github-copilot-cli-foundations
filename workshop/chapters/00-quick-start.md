@@ -1,12 +1,10 @@
 # 00 - Quick Start
 
-![Copilot sign-in flow](../../00-quick-start/assets/auth-device-flow.png)
+![Copilot sign-in flow](../assets/auth-device-flow.png)
 
 ## What You Will Do
 
 Get Copilot CLI running, sign in, and send one successful prompt.
-
-## What This Chapter Covers
 
 In this chapter, you will get Copilot CLI running, sign in, verify the sample app, and try one hello prompt.
 
@@ -16,11 +14,13 @@ By the end of this chapter, you should be able to start Copilot CLI and get a re
 
 ## Follow Along
 
-1. Open the repository root in a terminal.
-2. Start Copilot CLI.
-3. Sign in with GitHub.
-4. Verify the sample app works.
-5. Ask one simple hello prompt.
+Use the book app sample as your practice example: `workshop/samples/book-app-project/`.
+
+1. Run this command from the repository root: `copilot`
+2. In Copilot, run this command: `/login`
+3. Run these commands to verify the sample app: `cd workshop/samples/book-app-project` then `python book_app.py list`
+4. Return to the repository root and start Copilot again: `cd ../..` then `copilot`
+5. Run this prompt: `Say hello and tell me what you can help with`
 
 ## How To Follow Along
 
@@ -28,27 +28,6 @@ By the end of this chapter, you should be able to start Copilot CLI and get a re
 - Pause after each step and wait for the result.
 - Compare your output with the group if something looks different.
 - If a step fails, raise your hand and move on when the presenter says so.
-
-## Try These Commands
-
-```bash
-copilot
-```
-
-```bash
-/login
-```
-
-```bash
-cd samples/book-app-project
-python book_app.py list
-```
-
-```bash
-cd ../..
-copilot
-> Say hello and tell me what you can help with
-```
 
 ## What Success Looks Like
 

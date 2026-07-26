@@ -1,12 +1,10 @@
 # 06 - MCP Servers
 
-![Using MCP servers](../../06-mcp-servers/assets/using-mcp-servers.png)
+![Using MCP servers](../assets/using-mcp-servers.png)
 
 ## What You Will Do
 
 See how Copilot can connect to external tools and live context through MCP.
-
-## What This Chapter Covers
 
 In this chapter, you will inspect MCP servers, try a live-context prompt, and see how external tools extend Copilot.
 
@@ -16,11 +14,11 @@ By the end of this chapter, you should understand what MCP adds and why trust bo
 
 ## Follow Along
 
-1. Explain what MCP adds.
-2. Look at the configured servers.
-3. Demonstrate one live context example.
-4. Explain trust boundaries.
-5. Reinforce that only needed servers should be enabled.
+1. Run this prompt: `What does MCP add to Copilot? Answer in one sentence.` Then copy your one-sentence answer into your notes.
+2. Run this prompt: `Show my MCP servers.`
+3. Run this prompt: `What tools are available from the connected MCP servers?`
+4. Run this prompt: `Give me one trust boundary rule I should follow when using MCP servers in this workshop.`
+5. Run this prompt: `Based on this task, list only the MCP servers I actually need right now.`
 
 ## How To Follow Along
 
@@ -28,16 +26,6 @@ By the end of this chapter, you should understand what MCP adds and why trust bo
 - Keep your prompts short and specific.
 - Ask what changed when live context was added.
 - Stay inside the trusted servers for the demo.
-
-## Try These Prompts
-
-```text
-Show my MCP servers.
-```
-
-```text
-What tools are available from the connected MCP servers?
-```
 
 ## Your Practice Step
 

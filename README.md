@@ -1,40 +1,71 @@
-# Workshop-Only Track
+# Participant Practice Checklist
 
-This folder is a short, practice-first version of the course. Use it when you want to demo the full journey live, with participants following along step by step.
+Use this page if you only want the hands-on steps during the workshop.
 
-This workshop is designed to take about 50 minutes total: 10 minutes for the opening presentation and 40 minutes for chapter practice.
+## How To Use This Page
 
-## Start Here
+- Read one chapter at a time.
+- Type the command or prompt exactly as shown.
+- Wait for the result before moving on.
+- Compare your answer with the person next to you or with the presenter.
+- If you get stuck, skip ahead and come back later.
 
-If you are opening with a 10-minute presentation first, use [the workshop run-of-show](./run-of-show.md) before moving into the chapter practice pages.
+## Chapter 00 - Quick Start
 
-If you want a learner-facing sheet with only the practice steps, use [the participant practice checklist](./participant-practice.md).
+- Open the repository root in a terminal.
+- Start Copilot CLI.
+- Sign in with GitHub.
+- Verify the sample app works.
+- Send one hello prompt.
 
-## How to use it
+## Chapter 01 - First Steps
 
-1. Start with [Chapter 00](./chapters/00-quick-start.md) to get everyone ready.
-2. Move through the chapters in order.
-3. Keep each chapter focused on one live demo or one practice loop.
-4. Ask participants to run the same command before moving on.
+- Try a code review prompt.
+- Try an explain-code prompt.
+- Try a generate-code prompt.
+- Notice the difference between interactive, plan, and programmatic use.
 
-## Chapter List
+## Chapter 02 - Context and Conversations
 
-- [00 - Quick Start](./chapters/00-quick-start.md)
-- [01 - First Steps](./chapters/01-setup-and-first-steps.md)
-- [02 - Context and Conversations](./chapters/02-context-conversations.md)
-- [03 - Development Workflows](./chapters/03-development-workflows.md)
-- [04 - Agents and Custom Instructions](./chapters/04-agents-custom-instructions.md)
-- [05 - Skills](./chapters/05-skills.md)
-- [06 - MCP Servers](./chapters/06-mcp-servers.md)
-- [07 - Putting It All Together](./chapters/07-putting-it-together.md)
+- Reference one file with `@`.
+- Reference multiple files with `@`.
+- Reference a folder with `@`.
+- Ask a follow-up question in the same session.
 
-## Workshop Rules
+## Chapter 03 - Development Workflows
 
-- Use the same sample project throughout: `samples/book-app-project/`
-- Keep prompts short and copy-paste ready
-- Pause after each demo so participants can try it themselves
-- If setup takes too long, skip ahead and come back later
+- Run a review prompt.
+- Run a refactor prompt.
+- Run a debugging prompt.
+- Run a test-generation prompt.
+- Run a commit-message prompt.
 
-## Goal
+## Chapter 04 - Agents and Custom Instructions
 
-By the end of the workshop, everyone should have completed at least one end-to-end Copilot CLI workflow they can repeat on their own.
+- Review a file with a generic prompt.
+- Review the same file with the Python reviewer agent.
+- Compare the answers.
+
+## Chapter 05 - Skills
+
+- Review a file with a skill.
+- List the available skills.
+- Compare the answer with and without the skill.
+
+## Chapter 06 - MCP Servers
+
+- Show the connected MCP servers.
+- Check the available tools.
+- Discuss which external system would help your own work.
+
+## Chapter 07 - Putting It All Together
+
+- Start with context.
+- Ask for a plan.
+- Make a small change.
+- Verify the result.
+- Summarize the workflow.
+
+## Simple Rule
+
+If you get stuck, move to the next step and keep the workshop going. The goal is practice, not perfection.

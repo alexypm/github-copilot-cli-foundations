@@ -1,6 +1,3 @@
-Absolutely — here’s a clean README you can use for the repository root.
-
-````markdown name=README.md
 # Beginner GitHub CLI Workshop
 
 A hands-on workshop repository for learning and practicing GitHub CLI workflows.
@@ -69,11 +66,3 @@ Contributions are welcome! If you’d like to improve workshop content:
 3. Commit your changes
 4. Open a pull request
 
-## License
-
-Add your preferred license information here (for example, MIT).
-````
-
-If you want, I can also generate:
-1) a **shorter version** (for public-facing profile/repo clarity), or  
-2) a **more detailed instructor-style README** with workshop outcomes, timing, and facilitation notes.

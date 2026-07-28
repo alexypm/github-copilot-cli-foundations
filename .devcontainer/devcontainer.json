@@ -1,11 +1,5 @@
 {
   "name": "Beginner GitHub Copilot CLI Workshop",
-  "image": "mcr.microsoft.com/devcontainers/python:3.10",
-  "postCreateCommand": "bash .devcontainer/post-create.sh",
-  "features": {},
-  "customizations": {
-    "vscode": {
-      "extensions": ["GitHub.copilot", "GitHub.copilot-chat"]
-    }
-  }
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "postCreateCommand": "bash .devcontainer/postCreate.sh"
 }

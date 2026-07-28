@@ -38,6 +38,7 @@ Pick one path first, then continue to Start Here.
 3. Wait for the environment to finish building.
 4. Verify the sample app works: `cd workshop/samples/book-app-project` then `python book_app.py list`.
 5. Return to repo root: `cd ../..`.
+6. Update to CLI latest version: `curl -fsSL https://gh.io/copilot-install | sudo bash`
 
 ### Local Setup
 

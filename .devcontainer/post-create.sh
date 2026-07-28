@@ -1,16 +1,22 @@
-#!/bin/bash
-set -e
+#!/usr/bin/env bash
+set -euo pipefail
 
-echo "⬆️ Installing latest GitHub CLI..."
-# Install latest gh CLI from official source
-type -p curl >/dev/null || (sudo apt-get update && sudo apt-get install curl -y)
-curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
-sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
-sudo apt-get update
-sudo apt-get install gh -y
+echo ">>> Updating Copilot CLI to latest..."
+curl -fsSL https://gh.io/copilot-install | sudo bash
 
-echo "🤖 Installing GitHub Copilot CLI extension..."
-gh extension install github/gh-copilot || gh extension upgrade gh-copilot
+echo ">>> Ensuring gh-copilot extension is installed/updated..."
+if gh extension list | grep -q "github/gh-copilot"; then
+  gh extension upgrade github/gh-copilot || true
+else
+  gh extension install github/gh-copilot
+fi
 
-echo "✅ Done! Run 'gh copilot --version' to verify."
+echo ">>> Adding 'copilot' alias..."
+if ! grep -q "alias copilot='gh copilot'" ~/.bashrc; then
+  echo "alias copilot='gh copilot'" >> ~/.bashrc
+fi
+
+echo ">>> Done. Next run:"
+echo "    gh auth login"
+echo "    gh auth refresh -h github.com -s read:org,repo,copilot"
+echo "    copilot suggest \"write a hello world bash script\""

@@ -4,59 +4,44 @@
 
 ## What You Will Do
 
-See how skills automate repeatable checks so you do not have to restate the same rules.
-
-In this chapter, you will run a skill-based prompt, compare it with a normal prompt, and see how skills keep checks consistent.
+Follow the facilitator through one code review that automatically triggers a skill, then compare it with the same review without custom instructions.
 
 ## Goal
 
-By the end of this chapter, you should know how skills help keep answers consistent.
+By the end of this chapter, you should be able to explain how Copilot matches a natural prompt to a skill and applies repeatable team instructions.
+## CLI Commands for This Chapter
 
-## Choose Your Own Adventure
+| Command | Where to run it | Purpose |
+|---|---|---|
+| `copilot --name=skills-demo` | Terminal | Start the skill-enabled session |
+| `/skills list` | Copilot session | List available skills |
+| `/code-checklist <prompt>` | Copilot session | Invoke the skill directly |
+| `copilot --name=skills-baseline --no-custom-instructions` | Terminal | Start a comparison session without custom instructions |
+| `/exit` | Copilot session | End the current session |
+| `copilot --resume=skills-demo` | Terminal | Resume the skill-enabled session |
 
-If you are short on time, pick one outcome first.
+## Bookstore Use Case: Automate the Quality Checklist
 
-| I want to... | Start with... |
-|---|---|
-| Discover and test a skill quickly | Task 1: Discover and Trigger a Skill |
-| Compare skill output vs normal output | Task 2: Compare Against a Plain Prompt |
+The specialist review in Chapter 04 showed that repeatable criteria improve consistency. Now the team will package that quality checklist as a skill that Copilot can discover from a natural request.
 
-For full understanding, do Task 1 then Task 2.
-
-## Follow Along
-
-Use the book app sample as your practice example: `workshop/samples/book-app-project/`.
-
-## Real-World Storyline: Skills as Tool Attachments
+## Real-World Analogy: Skills as Tool Attachments
 
 Think of Copilot like a power tool. It works out of the box, but specialized attachments make it reliable for specific jobs.
 
-![Power tools analogy](../assets/skills-power-tools-analogy.png)
+<img src="../assets/skills-power-tools-analogy.png" alt="Power tools analogy" width="650">
 
-In this chapter we are going to:
+In this chapter, we will:
 
-1. Start with general behavior.
-2. Add one reusable skill.
-3. Compare consistency with and without the skill.
-4. Capture when to use skills vs agents vs MCP.
-
-### Start Here: Start with No Skill Assumptions
-
-1. Start Copilot: `copilot --name=skills-demo`
-
-## *New to Skills?* Start Here!
-
-1. **See what skills are available:**
-	```bash
-	/skills list
-	```
-	This shows built-in skills plus project and user skills.
-2. **Look at a real skill file:** `.github/skills/code-checklist/SKILL.md`
-3. **Understand the core idea:** skills are auto-applied when your prompt matches a skill's description.
+1. Find an available skill.
+2. Trigger it with a natural prompt.
+3. Confirm which skill Copilot used.
+4. Compare the result with a no-custom-instructions baseline.
 
 ## How Skills Work
 
 Skills are task-specific instruction folders. Copilot checks your prompt, matches likely skills, and loads them automatically.
+
+Run `/skills list` to see built-in, project, and user skills. The bookstore example uses `.github/skills/code-checklist/SKILL.md`; Copilot can apply it automatically when a prompt matches its description.
 
 Example behavior:
 
@@ -68,17 +53,17 @@ Generate tests for the BookCollection class
 # Copilot can auto-match a pytest generation skill
 ```
 
-Direct invocation is also available when you want explicit control:
+Direct invocation is available when you want explicit control, but we will use automatic discovery in this exercise:
 
 ```bash
-/code-checklist Review @workshop/samples/book-app-project/books.py
+/code-checklist Review @samples/book-app-project/books.py
 ```
 
 ## Skills vs Agents vs MCP
 
 Use this quick mental model:
 
-![Skills agents MCP comparison](../assets/skills-agents-mcp-comparison.png)
+<img src="../assets/skills-agents-mcp-comparison.png" alt="Skills agents MCP comparison" width="650">
 
 | Feature | What It Does | When to Use |
 |---|---|---|
@@ -86,74 +71,101 @@ Use this quick mental model:
 | Skills | Adds task-specific instructions | You repeat the same type of checks often |
 | MCP | Connects external systems | You need live context from tools and services |
 
-## From Manual Prompts to Automatic Expertise
+## Live Follow-Along
 
-Before skills, teams rewrite long prompts and still miss checklist items.
+### Step 1: Start the Shared Exercise
 
-After skills, a short request can apply a full checklist consistently.
+In **Terminal 1**, start a named interactive session:
 
-![Skill auto-discovery flow](../assets/skills-auto-discovery-flow.png)
+```powershell
+copilot --name=skills-demo
+```
 
-Use this compare prompt to observe the difference:
+Keep this session open until the wrap-up.
 
-1. Run: `Review @workshop/samples/book-app-project/books.py for quality issues.`
-2. Run: `Now apply a checklist-driven review for the same file.`
-3. Ask: `What changed in structure, consistency, and actionability?`
-
-### Task 1: Discover and Trigger a Skill
+### Step 2: Discover the Skill
 
 #### Find what is available
 
-Use `/skills list` to see what can run before writing any custom prompt.
+Run:
 
-#### Why this matters
+```text
+/skills list
+```
 
-Skills reduce repetition by automatically applying team rules.
+Find `code-checklist` in the list. It should describe Python code quality, bugs, security issues, and best practices.
 
-1. Run: `/skills list`
-2. If needed, load the local workshop skill: `Copy-Item workshop/skills/code-checklist .github/skills/code-checklist -Recurse -Force`
-3. Run: `Review @workshop/samples/book-app-project/books.py using the code-checklist skill.`
-4. Run: `List which checklist categories you applied in this review.`
+> **Checkpoint:** Do not continue until you can see `code-checklist`. If it is missing, tell the facilitator.
+
+### Step 3: Trigger the Skill Naturally
+
+Run this prompt exactly as shown. Do not type the skill name:
+
+```text
+Check @samples/book-app-project/books.py for Python code quality, bugs, security issues, and best practices.
+```
+
+Look for a checklist organized into **Code Quality**, **Input Validation**, **Testing**, and **Summary**. These headings come from the skill instructions.
 
 <details>
 <summary>See a trigger demo (optional)</summary>
 
-![Skills trigger demo](../assets/skills-trigger-demo.gif)
+<img src="../assets/skills-trigger-demo.gif" alt="Skills trigger demo" width="650">
 
 </details>
 
-### Task 2: Compare Against a Plain Prompt
+### Step 4: Confirm the Skill Was Used
+
+In the same session, run:
+
+```text
+What skills did you use for that response?
+```
+
+Confirm that Copilot reports using `code-checklist`.
+
+> **Checkpoint:** Be ready to share one checklist item that Copilot applied without you spelling it out.
+
+### Step 5: Compare Without Custom Instructions
 
 #### Compare structure and actionability
 
-Run the same task without a skill to see the difference in consistency.
+Leave Terminal 1 open. In **Terminal 2**, start a separate interactive session with custom instructions disabled:
 
-1. Run: `Now review @workshop/samples/book-app-project/books.py without using any skill.`
-2. Run: `Compare the two outputs in one paragraph: consistency, structure, and actionability.`
-3. Run: `Where are skills stored in this project, and how can a team share them across projects?`
+```powershell
+copilot --name=skills-baseline --no-custom-instructions
+```
+
+Then run the exact same natural prompt:
+
+```text
+Check @samples/book-app-project/books.py for Python code quality, bugs, security issues, and best practices.
+```
+
+This interactive baseline keeps the response visible in PowerShell. Do not use the skill name in the prompt.
+
+Compare the two outputs:
+
+| Check | Skill-Enabled Response | Baseline Response |
+|---|---|---|
+| Uses the expected section headings | Yes or no | Yes or no |
+| Checks input validation | Yes or no | Yes or no |
+| Checks pytest coverage | Yes or no | Yes or no |
+| Ends with an actionable summary | Yes or no | Yes or no |
+
+> **Checkpoint:** The exact findings may vary. Focus on whether the skill made the structure and checks more consistent.
 
 ### Wrap Up: Resume and Pick the Right Tool
 
-1. Exit with `/exit`
-2. Resume with `copilot --resume=skills-demo`
+Return to Terminal 1:
+
+1. Exit with `/exit`.
+2. Resume with `copilot --resume=skills-demo`.
 3. Ask: `Summarize when to use a skill, when to use an agent, and when to use a plain prompt.`
 4. Move to Chapter 06 to extend this workflow with trusted external MCP tools.
 
-## How To Follow Along
+### What We Achieved Together
 
-- Follow the steps in order: discover, compare, then decide.
-- Keep one session open so comparison stays grounded in one task.
-- Use the resume step to show that your workshop conversation is saved.
-- If skill behavior seems stale after edits, run `/skills reload`.
+We discovered the `code-checklist` skill, triggered it with a natural prompt, confirmed that Copilot used it, and compared its structured review with a no-custom-instructions baseline.
 
-## Your Practice Step
-
-Create one new mini skill idea with 3-5 rules for your team and test it on one file.
-
-## What Success Looks Like
-
-You should see more consistent and reusable feedback when the skill is used.
-
-## Workshop Tip
-
-Use skills for repeatable standards and checklists, not one-off creative prompts.
+Continue to Chapter 06, where we add trusted live repository context with MCP.

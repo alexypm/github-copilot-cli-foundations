@@ -1,8 +1,9 @@
 import json
 from dataclasses import dataclass, asdict
+from pathlib import Path
 from typing import List, Optional
 
-DATA_FILE = "data.json"
+DATA_FILE = Path(__file__).with_name("data.json")
 
 
 @dataclass

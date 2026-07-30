@@ -9,26 +9,24 @@ Use Copilot for everyday engineering work: review, refactor, debug, test, and Gi
 ## Goal
 
 By the end of this chapter, you should see how Copilot can help with the main daily development tasks.
+## CLI Commands for This Chapter
 
-## Follow Along
+| Command | Where to run it | Purpose |
+|---|---|---|
+| `copilot --name=workflow-demo` | Terminal | Start the workflow session |
+| `/plan <task>` | Copilot session | Plan a focused code change |
+| `/diff` | Copilot session | Review changes made in the session |
+| `/pr auto` | Copilot session | Choose the appropriate pull request action |
+| `/exit` | Copilot session | End the workflow session |
+| `copilot --resume=workflow-demo` | Terminal | Resume the named session |
 
-Use the book app sample as your practice example: `workshop/samples/book-app-project/`.
+## Bookstore Use Case: Fix Empty Book Titles
 
-## Big-Picture Journey
+You confirmed that empty book titles can reach `BookCollection.add_book`. Your team has assigned you a small quality pass: implement the validation, protect it with tests, review the diff, and prepare the change for a pull request.
 
-This chapter follows one realistic developer path from triage to delivery:
+The work follows five practical workflow lanes in the same bookstore project.
 
-1. Find the highest-impact issue first.
-2. Improve code structure safely.
-3. Fix the riskiest bug with the smallest safe change.
-4. Add tests so the fix stays fixed.
-5. Communicate clearly for commit and PR review.
-
-## Real-World Workflow Model
-
-Think of this chapter as five practical workflow lanes you can run in the same project.
-
-![Five workflows swimlane](../assets/workflows-five-swimlane.png)
+<img src="../assets/workflows-five-swimlane.png" alt="Five workflows swimlane" width="650">
 
 You will move from finding issues to shipping changes:
 
@@ -38,35 +36,18 @@ You will move from finding issues to shipping changes:
 4. Add tests for confidence.
 5. Prepare commit and PR communication.
 
-### Start Here: You Are Assigned a Quality Pass
+## Live Follow-Along
+
+### Step 1: Start the Quality Pass
 
 1. Start Copilot: `copilot --name=workflow-demo`
 2. Keep this same session open for all workflow prompts below.
 
-## *New to Development Workflows?* Quick Warm-Up
-
-1. **Run one focused review first:**
-	`Review @workshop/samples/book-app-project/books.py for bugs and quality issues.`
-2. **Convert results into priority:**
-	`Create a checklist grouped by Critical, High, Medium, Low.`
-3. **Pick only one first action:**
-	`Which one issue should I fix first and why?`
-
-## How This Chapter Works
-
-Use this loop for each task:
-
-1. Run one clear prompt.
-2. Ask one follow-up that increases actionability.
-3. Capture one concrete output to carry to the next task.
-
-Treat each task as input to the next one. Do not restart from scratch.
-
-### Task 1: Review and Prioritize
+### Step 2: Review and Prioritize
 
 Start by creating a prioritized issue list. This gives you a confident starting point for all later tasks.
 
-![Code review workflow](../assets/workflows-code-review-swimlane.png)
+<img src="../assets/workflows-code-review-swimlane.png" alt="Code review workflow" width="650">
 
 #### Basic Review
 
@@ -76,98 +57,111 @@ This step uses the `@` symbol to reference a file so Copilot can read the exact 
 
 Starting with review gives you a clear list of issues so you can choose the most important fix first.
 
-1. Run: `Review @workshop/samples/book-app-project/books.py for bugs, quality issues, and missing validation.`
+1. Run: `Review @samples/book-app-project/books.py for bugs, quality issues, and missing validation.`
 2. Run: `Now create a markdown checklist grouped as Critical, High, Medium, Low.`
 3. Run: `Which one issue should I fix first and why?`
 
-<details>
-<summary>See demo output (optional)</summary>
-
-![Code review demo](../assets/workflows-code-review-demo.gif)
-
-</details>
-
-### Task 2: Clean Up the Code
-
-Use your top issue from Task 1 as context while refactoring so improvements stay grounded in real risk.
-
-![Refactoring workflow](../assets/workflows-refactoring-swimlane.png)
-
-#### Refactor with intent
-
-Ask for readability improvements while preserving behavior. This keeps risk low for beginner teams.
-
-1. Run: `Refactor @workshop/samples/book-app-project/book_app.py to make the code easier to read without changing behavior.`
-2. Run: `List the specific refactor steps before applying them.`
-3. Run: `What behavior checks should I run after this refactor?`
+> **Checkpoint:** Use missing validation for empty book titles as the shared first issue, even if Copilot reports other valid findings.
 
 <details>
 <summary>See demo output (optional)</summary>
 
-![Refactor demo](../assets/workflows-refactor-demo.gif)
+<img src="../assets/workflows-code-review-demo.gif" alt="Code review demo" width="650">
 
 </details>
 
-### Task 3: Debug the Main Risk
+### Step 3: Plan and Implement the Smallest Fix
 
-Now focus on one concrete failure mode and apply the smallest safe fix before broad changes.
+Use the issue from Step 2 to make one focused change. This guarantees that `/diff` has a real session change to display later.
 
-![Debugging workflow](../assets/workflows-debugging-swimlane.png)
+<img src="../assets/workflows-refactoring-swimlane.png" alt="Refactoring workflow" width="650">
 
-#### Debug from symptoms
+#### Change with intent
 
-Describe what is wrong and where you see it. Copilot can then reason about likely root cause and smallest safe fix.
+Plan first, then ask Copilot to edit only the validation path and its tests.
 
-1. Run: `Help me debug this issue in @workshop/samples/book-app-project/books.py and explain the likely cause.`
-2. Run: `Show me the smallest safe fix first.`
-3. Run: `What test should I add to prevent this bug from coming back?`
+1. Run: `/plan Add validation that prevents an empty or whitespace-only book title from being saved.`
+2. Run: `Implement that plan in @samples/book-app-project/books.py. Raise ValueError with a friendly message and do not change unrelated behavior.`
+3. Run: `Add focused pytest tests in @samples/book-app-project/tests/ for an empty title, a whitespace-only title, and a valid title.`
+4. Run: `Run the workshop book app tests and report the result.`
+
+> **Checkpoint:** Copilot should have changed source and test files, and the focused tests should pass before you continue.
 
 <details>
 <summary>See demo output (optional)</summary>
 
-![Debug demo](../assets/workflows-debug-demo.gif)
+<img src="../assets/workflows-refactor-demo.gif" alt="Refactor demo" width="650">
 
 </details>
 
-### Task 4: Add Safety Tests
+### Step 4: Review and Repair the Change
+
+Now inspect the actual session changes and repair only a concrete issue found in them.
+
+<img src="../assets/workflows-debugging-swimlane.png" alt="Debugging workflow" width="650">
+
+#### Review from evidence
+
+Use `/diff` before asking for another code change.
+
+1. Run: `/diff`
+2. Run: `Review the current validation changes for bugs, unintended behavior changes, and missing edge cases. Report findings before editing.`
+3. If Copilot finds a real issue, run: `Fix only the highest-severity finding, then rerun the focused tests.`
+4. If there are no findings, run: `Explain why this change is safe in two sentences.`
+
+> **Checkpoint:** The diff should show both implementation and test changes. Tests should still pass after any repair.
+
+<details>
+<summary>See demo output (optional)</summary>
+
+<img src="../assets/workflows-debug-demo.gif" alt="Debug demo" width="650">
+
+</details>
+
+### Step 5: Check Test Coverage
 
 After refactor and bug fix work, lock behavior with tests so regressions are caught early.
 
-![Test generation workflow](../assets/workflows-testgen-swimlane.png)
+<img src="../assets/workflows-testgen-swimlane.png" alt="Test generation workflow" width="650">
 
 #### Test what can break
 
 Edge-case tests protect your refactor and bug fix work from regressions.
 
-1. Run: `Generate tests for @workshop/samples/book-app-project/books.py.`
-2. Run: `Prioritize tests for edge cases and validation failures.`
-3. Run: `Which generated test gives the highest value first?`
+1. Run: `Review @samples/book-app-project/tests/ for coverage of the new title validation behavior.`
+2. Run: `List any missing edge-case test without changing files.`
+3. If one is missing, run: `Add only the highest-value missing test and rerun the focused tests.`
+
+> **Checkpoint:** Every new validation rule should have at least one focused pytest test.
 
 <details>
+
 <summary>See demo output (optional)</summary>
 
-![Test generation demo](../assets/workflows-testgen-demo.gif)
+<img src="../assets/workflows-testgen-demo.gif" alt="Test generation demo" width="650">
 
 </details>
 
-### Task 5: Prepare to Ship
+### Step 6: Prepare to Ship
 
 Finish by turning technical work into clear reviewer communication.
 
-![Git workflow](../assets/workflows-git-swimlane.png)
+<img src="../assets/workflows-git-swimlane.png" alt="Git workflow" width="650">
 
 #### Communicate clearly in Git
 
 Good commit and PR text helps reviewers understand what changed and why.
 
-1. Run: `Summarize my current changes in one short paragraph.`
-2. Run: `Write a short commit message for the changes I made.`
-3. Run: `Draft a 4-bullet PR description with Summary, Changes, Testing, and Risks.`
+1. Run: `/diff` to review all changes made during this Copilot session.
+2. Run: `Summarize my current changes in one short paragraph.`
+3. Run: `Write a short commit message for the changes I made.`
+4. Run: `Draft a 4-bullet PR description with Summary, Changes, Testing, and Risks.`
+5. If you are on a feature branch with a GitHub remote, run: `/pr auto` to let Copilot choose the appropriate pull request action. Otherwise, stop after drafting the PR description.
 
 <details>
 <summary>See demo output (optional)</summary>
 
-![Git integration demo](../assets/workflows-git-demo.gif)
+<img src="../assets/workflows-git-demo.gif" alt="Git integration demo" width="650">
 
 </details>
 
@@ -176,24 +170,10 @@ Good commit and PR text helps reviewers understand what changed and why.
 1. Exit with `/exit`
 2. Resume with `copilot --resume=workflow-demo`
 3. Ask: `Summarize the top recommendation from each workflow in a table.`
-4. Take one repeated review task into Chapter 04 to see how a specialist agent improves consistency at scale.
+4. Take the same changed files into Chapter 04 to compare a general review with a specialist Python reviewer.
 
-## How To Follow Along
+### What We Achieved Together
 
-- Follow the steps in order from review to ship.
-- Use the follow-up prompt in each workflow to deepen the result.
-- Keep one session open so Copilot can reuse earlier context.
-- Resume the same named session at the end to demo saved conversation history.
-- If output gets too broad, narrow scope to one file and one explicit objective.
+We prioritized a real validation risk, implemented the smallest focused change, added pytest coverage, reviewed the session diff, and prepared clear commit and pull request communication.
 
-## Your Practice Step
-
-Repeat the same flow on a different file and compare the final summary.
-
-## What Success Looks Like
-
-You should see that Copilot can help across the same project from multiple angles, and you should be able to explain one concrete output from each workflow.
-
-## Workshop Tip
-
-Keep each workflow focused: one main prompt, one follow-up prompt, one takeaway.
+Continue to Chapter 04, where we compare a general review with a specialist Python reviewer.

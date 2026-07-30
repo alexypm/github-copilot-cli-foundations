@@ -2,98 +2,53 @@
 
 ![Chapter 00: Quick Start](../assets/ch00-header.png)
 
+## Lab 0 · Get Copilot CLI Running in Your Repo
 
-## What You Will Do
+You've just created your own repo from the template (shown on screen). Two paths from here, pick one:
 
-Get Copilot CLI running, sign in, and send one successful prompt.
+- **Copilot CLI installed on your machine?** -> [Section 1](#1--local-copilot-cli)
+- **Can't install it and requested a cloud environment during registration?** -> [Section 2](#2--github-codespaces-nothing-to-install)
 
-In this chapter, you will get Copilot CLI running, sign in, verify the sample app, and try one hello prompt.
+Either way, you're done when the Copilot CLI prompt is open in your repo and `/usage` responds.
 
-## Goal
+---
 
-By the end of this chapter, you should be able to start Copilot CLI and get a reply back.
+## 1 · Local Copilot CLI
 
-## Follow Along
+Clone the repo you just created (the org and name you chose in the on-screen step) and step into it:
 
-Use the book app sample as your practice example: `workshop/samples/book-app-project/`.
+```bash
+gh repo clone <hackathon-org>/<your-repo-name>
+cd <your-repo-name>
+copilot
+```
 
-## Workshop Access Requirement
+If clone fails with a 404, your `gh` CLI is probably still on your enterprise account. Run `gh auth login` with your private account first, or jump to [Section 2](#2--github-codespaces-nothing-to-install).
 
-Before setup, sign in with the **demo organization account** using the login details provided earlier.
+Use the right account. Today runs on the **private github.com account you provided at registration**, not your enterprise identity. Inside Copilot CLI:
 
-1. Use the provided demo organization credentials in your browser.
-2. Confirm you can access the workshop repository in that organization.
-3. Use that same signed-in account for Codespaces and Copilot CLI login.
+```text
+/logout
+/login
+```
 
-This is required because Codespaces access and the Copilot demo license are assigned to the demo organization account for the workshop.
+Follow the device-code flow in the browser and sign in with the private account. Check that `/usage` responds. Then continue to [01 - Setup and First Steps](01-setup-and-first-steps.md).
 
-## Choose Your Setup Path
+## 2 · GitHub Codespaces (Nothing to Install)
 
-Pick one path first, then continue to Start Here.
+First, in your browser, make sure github.com is logged in as your **personal registration account**. The codespace will belong to whoever creates it.
 
-### GitHub Codespaces (Zero Setup)
+On the page of the repo you created in the hackathon organization:
 
-1. Fork this repository: `https://github.com/sharanyaskonandur/beginner-github-cli-workshop`.
-2. Open **Code** -> **Codespaces** -> **Create codespace on main**.
-3. Wait for the environment to finish building.
-4. Verify the sample app works: `cd workshop/samples/book-app-project` then `python book_app.py list`.
-5. Return to repo root: `cd ../..`.
-6. Update to CLI latest version: `curl -fsSL https://gh.io/copilot-install | sudo bash`
+1. Select the green **Code** button.
+2. Open the **Codespaces** tab.
+3. Choose **Create codespace on main**.
 
-### Local Setup
+Wait for the container to build (about 2 minutes; it pre-installs Node 22 and Copilot CLI). Then, in the codespace terminal:
 
-1. Clone the repository: `git clone https://github.com/sharanyaskonandur/beginner-github-cli-workshop`.
-2. Enter the repo: `cd beginner-github-cli-workshop`.
-3. Install Copilot CLI using one option:
-	- `npm install -g @github/copilot`
-	- `winget install GitHub.Copilot` (Windows)
-	- `brew install copilot-cli` (macOS/Linux)
-4. Verify Python sample app: `cd workshop/samples/book-app-project` then `python book_app.py list`.
-5. Return to repo root: `cd ../..`.
+```bash
+curl -fsSL https://gh.io/copilot-install | sudo bash
+copilot
+```
 
-![Copilot sign-in flow](../assets/auth-device-flow.png)
-### Start Here: First Launch
-
-1. Run this command from the repository root: `copilot`
-2. In Copilot, run this command: `/login`
-3. Confirm you can return to the Copilot prompt after browser sign-in.
-4. You are now ready for Chapter 01, where you will solve your first mini task on the book app.
-
-### Task 1: Confirm the Sample App Works
-
-1. Run these commands to verify the sample app: `cd workshop/samples/book-app-project` then `python book_app.py list`
-2. Return to the repository root and start Copilot again: `cd ../..` then `copilot`
-
-### Task 2: Send Your First Prompt
-
-3. Run this prompt: `Say hello and tell me what you can help with`
-
-### Wrap Up: Recover Quickly If Something Fails
-
-1. If login fails, run `/login` again in the same session.
-2. If path errors occur, run `cd ../..` and retry from repository root.
-
-## How To Follow Along
-
-- Follow the steps in order: launch, verify, prompt, recover.
-- Type each command yourself instead of just watching.
-- Pause after each step and confirm expected output.
-- Use the recovery step if something fails.
-
-## ✅ You're Ready!
-
-You are ready for Chapter 01 when:
-
-- Copilot CLI starts successfully.
-- The browser login flow completes.
-- The sample book app lists books.
-- Copilot answers with a short welcome message.
-
-If you are short on time, run only these essentials:
-
-- `copilot`
-- `/login`
-- `python book_app.py list`
-- `Say hello and tell me what you can help with`
-
-Continue to [01 - First Steps](01-setup-and-first-steps.md).
+The codespace already runs as your private account, so no extra login is needed. Check that `/usage` responds, then continue to [01 - Setup and First Steps](01-setup-and-first-steps.md).

@@ -11,177 +11,111 @@ In this chapter, you will inspect MCP servers, try a live-context prompt, and de
 ## Goal
 
 By the end of this chapter, you should understand what MCP adds and why trust boundaries matter.
+## CLI Commands for This Chapter
 
-## Follow Along
+| Command | Where to run it | Purpose |
+|---|---|---|
+| `copilot --name=mcp-demo` | Terminal | Start a named session |
+| `/mcp show` | Copilot session | Show configured MCP servers |
+| `/mcp list` | Copilot session | Show attached servers and status |
+| `/mcp search` | Copilot session | Discover available MCP servers |
+| `/login` | Copilot session | Sign in again if GitHub access fails |
+| `copilot --resume=mcp-demo` | Terminal | Resume the workshop session |
 
-Use this repository as your practice example and keep one chat session open across all tasks.
+Optional server-management commands:
 
-### Start Here: Confirm MCP Is Available
+```text
+/mcp enable <server-name>
+/mcp disable <server-name>
+/mcp auth <server-name>
+```
 
-1. Start Copilot: `copilot --name=mcp-demo`
+## Bookstore Use Case: Check Live Repository Context
 
-## *New to MCP?* Start Here!
+Your validation change is ready for review. Before the team ships it, you want live repository context that local files cannot provide: recent commits, open issues, and connected tool capabilities.
 
-![Using MCP servers](../assets/using-mcp-servers.png)
+Keep one Copilot session open and use this repository as the shared example.
 
-1. **Run a fast proof:** ask for recent commits in this repository.
-2. **Inspect available servers:** run `/mcp show`.
-3. **Understand the core idea:** MCP lets Copilot reach trusted external context, not just local file snippets.
+<img src="../assets/using-mcp-servers.png" alt="Using MCP servers" width="650">
 
-### Task 1: Verify Built-In MCP Value
+## Live Follow-Along
 
-#### Quick Start: MCP in 30 Seconds
+### Step 1: Start and Inspect MCP
 
-1. Run: `List the recent commits in this repository.`
-2. If commit details appear, MCP is active and returning live repository context.
-3. Self-check: `Why is this result different from a file-only prompt?`
 
-### Task 2: Inspect Servers and Trust Boundaries
+1. Start Copilot: `copilot --name=mcp-demo`.
+2. Run `/mcp show`.
+3. Find the built-in `github` server and note whether it is enabled.
 
-#### The `/mcp show` Command
+> **Checkpoint:** If `github` is unavailable, follow the facilitator's screen for the live query and continue with the trust discussion.
+<img src="../assets/mcp-multi-server-workflow.png" alt="MCP workflow" width="650">
 
-Use `/mcp show` to verify configured and enabled MCP servers.
+### Step 2: Fetch Live Release Context
 
-1. Run: `/mcp show`
-2. Confirm at least the built-in `github` server is listed.
-3. Self-check: `Which listed server is required for commit and issue queries?`
 
-#### What Changes with MCP?
+Run:
 
-Compare behavior with and without MCP-backed access.
+```text
+Using GitHub MCP tools, list the five most recent commits and up to three open issues for this repository. If there are no open issues, say so.
+```
 
-1. Run: `What's in GitHub issue #42?`
-2. Run: `What's in GitHub issue #42 of this repository?`
-3. Self-check: `Which response is actionable and why?`
+Then ask:
 
-Key takeaway: with MCP, Copilot can fetch live issue and repository state when the right server is enabled.
+```text
+What information in that response came from live GitHub state rather than local file content?
+```
 
-### Task 3: Add One MCP Server
-
-#### Configuring MCP Servers
-
-Now set up additional servers using the same pattern as the full chapter.
-
-1. You already proved MCP works with the built-in `github` server.
-2. Now you show how to add one more server to expand capability.
-3. Then you verify the new server appears in `/mcp show`.
-
-#### Installing MCP Servers from the Registry
-
-Use the registry for guided setup.
-
-Demo script:
-
-1. Say: `MCP works now. Next, I will add one server so you can see how capability grows.`
-2. Run: `/mcp search` and pick one server.
-3. Run: `/mcp show` and point out the new server entry.
-
-1. Run: `/mcp search`
-2. Select one server from the picker.
-3. Complete prompts shown by the CLI.
-4. Run: `/mcp show` to verify the server is enabled.
-
-#### MCP Configuration File
-
-Use this when you want manual, shareable setup.
-
-Where MCP config is stored:
-
-1. User-level: `~/.copilot/mcp-config.json`
-2. Project-level: `.mcp.json`
-3. Workspace-level: `.github/mcp.json`
-
-1. Run: `Show me a minimal mcp-config.json example with one local server.`
-2. Ask: `When should I keep MCP config user-level vs commit it to the repository?`
-3. Self-check: `For a solo setup, which config location should I use first and why?`
-
-Practical guidance:
-
-1. Use user-level config for personal experiments.
-2. Use project/workspace config when teammates should share the same MCP behavior.
-3. Keep tool scope narrow and enable only what a task needs.
-
-### Task 4: Run a Quick MCP Workflow
-
-#### Using MCP Servers
-
-![MCP workflow](../assets/mcp-multi-server-workflow.png)
-
-Use MCP when you need live information from connected tools instead of only local file context.
-
-1. Run: `Using available MCP tools, summarize this repository's chapter structure.`
-2. Run: `Using MCP, list recent bug-fix commits in this repository.`
-3. Self-check: `What did MCP fetch that a file-only prompt could miss?`
+> **Checkpoint:** Identify at least one result that can change without any local file changing.
 
 <details>
 <summary>See a full MCP workflow demo (optional)</summary>
 
-![MCP workflow demo](../assets/mcp-workflow-demo.gif)
+<img src="../assets/mcp-workflow-demo.gif" alt="MCP workflow demo" width="650">
 
 </details>
 
-## MCP Workflow Scenarios
+### Step 3: Connect Live Context to the Book-App Change
 
-Each example below is self-contained. **Pick one that interests you, or read them all.**
+<img src="../assets/mcp-issue-to-pr-workflow.png" alt="Issue to PR workflow" width="650">
 
-Demo flow for each example:
+Run:
 
-1. Run the prompt.
-2. Read the output aloud.
-3. Ask one quick reflection question.
+```text
+Based on the live repository context, give me three checks to make before opening a pull request for the book-title validation change.
+```
 
-### Multi-Server Exploration
+> **Checkpoint:** Separate checks based on local code from checks based on live repository state.
 
-1. Demo prompt: `List recent bug-fix commits in this repository.`
-2. Demo prompt: `Now list open issues related to those bug-fix areas.`
-3. Reflection: `Which server/tool gave commit data vs issue data?`
+### Step 4: Discuss Trust Boundaries
 
-### Issue-to-PR Workflow
+Run:
 
-![Issue to PR workflow](../assets/mcp-issue-to-pr-workflow.png)
+```text
+For the enabled MCP servers, summarize what data each server can read and what actions it may be able to take.
+```
 
-1. Demo prompt: `Show recent commits that changed workshop chapter files.`
-2. Demo prompt: `Using available MCP docs tools, find one best practice relevant to workshop documentation updates.`
-3. Reflection: `What new information came from MCP vs local file context?`
+Ask: `Which tools should remain disabled unless this task requires them?`
 
-### Health Dashboard
+Key rule: enable only the servers and tools needed for the current task, and review permissions before allowing write actions.
 
-1. Demo prompt: `Summarize current open issues and latest related commits for one feature area.`
-2. Demo prompt: `Create a 3-bullet next-step plan based on that live project context.`
-3. Reflection: `Would this plan be weaker without MCP? Why?`
+### Optional Facilitator Demo: Discover Another Server
 
-## Adding MCP Servers
+Registry contents and setup prompts vary, so participants can watch this step instead of installing a server.
 
-After proving built-in value, add one server to extend capability.
-
-1. Run: `/mcp search`
-2. Select one server and complete setup prompts.
-3. Run: `/mcp show` and verify the new server is enabled.
-4. Self-check: `How did the new server expand what I can ask?`
+1. Run `/mcp search`.
+2. Open one server entry and explain the capability and permissions it requests.
+3. Cancel setup unless that server is approved for the workshop environment.
+4. Run `/mcp show` again to confirm the enabled server list did not change unexpectedly.
 
 ### Wrap Up: Resume and Share MCP Value
 
 1. Exit with `/exit`
 2. Resume with `copilot --resume=mcp-demo`
 3. Ask: `Summarize MCP value in this workshop in four bullets.`
-4. You now have the complete MCP story: quick value, server visibility, behavior change, and extension.
+4. You have completed the story: local understanding, a tested code change, reusable standards, and live repository context.
 
-## How To Follow Along
+### What We Achieved Together
 
-- Follow the story sequence from quick start to adding one new server.
-- Keep prompts short so MCP tool usage is easy to observe.
-- Keep scope narrow: only enable tools needed for the current task.
-- Use the resume step to show the conversation can be continued later.
-- If you update MCP configuration files, restart or re-open your Copilot session before re-testing.
+We inspected available MCP servers, fetched live commit and issue context, connected that information to release readiness, and discussed the permissions and trust boundaries of external tools.
 
-## Your Practice Step
-
-Choose one real task, use MCP to gather live context, and note one new insight MCP gave you.
-
-## What Success Looks Like
-
-You should understand that MCP extends Copilot beyond local files and improves real-world task answers.
-
-## Workshop Tip
-
-Start with one server, prove value with a real task, then add more only when needed.
+Together, we carried one book-app improvement from initial exploration through implementation, testing, specialist review, reusable skills, and live repository context.

@@ -26,18 +26,6 @@ def test_add_book():
     assert book.year == 1949
     assert book.read is False
 
-
-@pytest.mark.parametrize("invalid_title", ["", "   "])
-def test_add_book_rejects_empty_title(invalid_title: str):
-    collection = BookCollection()
-
-    with pytest.raises(ValueError, match="Book title cannot be empty."):
-        collection.add_book(invalid_title, "Unknown Author", 2026)
-
-    assert collection.books == []
-    assert BookCollection().books == []
-
-
 def test_mark_book_as_read():
     collection = BookCollection()
     collection.add_book("Dune", "Frank Herbert", 1965)

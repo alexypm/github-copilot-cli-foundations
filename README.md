@@ -1,20 +1,20 @@
 # Workshop Track
 
-This is the short version of the course. Use it when you want a simple live workshop path built around the bookshop example in `workshop/samples/book-app-project/`.
+This is the short version of the course. Use it when you want a simple live workshop path built around the bookshop example in `samples/book-app-project/`.
 
 ## How To Use This Workshop
 
 1. Start with [Chapter 00](./chapters/00-quick-start.md).
 2. Move through the chapter files in order.
 3. Keep the focus on the follow-along steps.
-4. Use the same bookshop example throughout: `workshop/samples/book-app-project/`.
+4. Use the same bookshop example throughout: `samples/book-app-project/`.
 
 ## Workshop Resources Included
 
-- `workshop/samples/book-app-project/` - sample project used in prompts
-- `workshop/assets/` - images used by workshop chapters
-- `workshop/agents/python-reviewer.agent.md` - local agent example
-- `workshop/skills/code-checklist/` - local skill example
+- `samples/book-app-project/` - sample project used in prompts
+- `assets/` - images used by workshop chapters
+- `.github/agents/python-reviewer.agent.md` - local agent example
+- `.github/skills/code-checklist/` - local skill example
 
 ## Chapter Examples
 

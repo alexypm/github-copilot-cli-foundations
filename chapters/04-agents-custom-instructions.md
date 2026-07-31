@@ -4,13 +4,14 @@
 
 ## What You Will Do
 
-See how a specialist agent changes the style and consistency of the answer.
+Compare the same Python code review with a general prompt and a specialist agent.
 
-In this chapter, you will compare a general prompt with a specialist agent and see how custom instructions change the result.
+In this chapter, you will identify which review criteria become more focused and consistent.
 
 ## Goal
 
 By the end of this chapter, you should understand when to use a specialist agent instead of a general prompt.
+
 ## CLI Commands for This Chapter
 
 | Command | Where to run it | Purpose |
@@ -27,17 +28,9 @@ By the end of this chapter, you should understand when to use a specialist agent
 
 You implemented title validation and tests in Chapter 03. The team now wants a repeatable Python review standard, so you will compare a general review with a specialist review of the same code.
 
-## Real-World Analogy: Hiring Specialists
-
-Agents are like hiring the right specialist for a specific job instead of asking one general helper to do everything.
-
 <img src="../assets/agents-hiring-specialists-analogy.png" alt="Hiring specialists analogy" width="650">
 
-In this chapter you will:
-
-1. Compare generic output with specialist output.
-2. Capture what changed and why it is better.
-3. Turn those patterns into reusable team rules.
+Use a general prompt for flexible, one-time help. Use a specialist agent when you want the same expertise and standards applied across related tasks.
 
 ## Live Follow-Along
 
@@ -45,22 +38,6 @@ In this chapter you will:
 
 1. Start Copilot: `copilot --name=agents-demo`.
 2. Do not select a custom agent yet.
-
-## How Agents Work
-
-Use this quick model:
-
-| Type | How You Use It | Best For |
-|---|---|---|
-| Built-in agent | `/plan`, `/review`, or automatic routing | Common workflows like planning and review |
-| Custom agent | `/agent` picker or `copilot --agent=<name>` | Team-specific behavior and standards |
-
-Helpful checks during practice:
-
-1. Ask: `Which agent are you using right now?`
-2. Ask: `What constraints or focus areas are active for this agent?`
-
-Agents change how Copilot reasons for a class of tasks, not just one prompt. You used the built-in Plan agent with `/plan` in earlier chapters; this chapter focuses on comparing a general review with a custom agent.
 
 ### Step 2: Capture the General Review
 
@@ -72,8 +49,7 @@ Start with a general prompt so you can compare it fairly against specialist outp
 
 This shows how role-specific instructions improve consistency and depth.
 
-1. Run: `Review @samples/book-app-project/books.py and @samples/book-app-project/tests/ for bugs and quality issues.`
-2. Ask: `Summarize your review criteria in five bullets.`
+1. Run: `Review @workshop/samples/book-app-project/books.py and @workshop/samples/book-app-project/tests/ for bugs and quality issues.`
 
 > **Checkpoint:** Keep this response in the session. It is the baseline for the specialist comparison.
 
@@ -81,7 +57,7 @@ This shows how role-specific instructions improve consistency and depth.
 
 1. Run `/agent`.
 2. Select `python-reviewer`.
-3. Run the same prompt: `Review @samples/book-app-project/books.py and @samples/book-app-project/tests/ for bugs and quality issues.`
+3. Run the same prompt: `Review @workshop/samples/book-app-project/books.py and @workshop/samples/book-app-project/tests/ for bugs and quality issues.`
 4. Run: `Compare the generic review and python-reviewer review in a short table.`
 
 > **Checkpoint:** Identify one criterion the specialist applied more consistently or explicitly.
@@ -99,9 +75,7 @@ This shows how role-specific instructions improve consistency and depth.
 
 After comparison, capture the good patterns as team guidance.
 
-1. Run: `Where do custom instructions live in this project?`
-2. Run: `Show a minimal custom instruction set that enforces concise bug-first reviews.`
-3. Run: `How can a team share and reuse this same agent setup?`
+Run: `Show a minimal project custom instruction that enforces concise, bug-first reviews, and explain where the team should save it.`
 
 > **Checkpoint:** The answer should distinguish project instructions from an agent selected for a specialized task.
 

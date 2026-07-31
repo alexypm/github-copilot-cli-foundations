@@ -4,11 +4,14 @@
 
 ## What You Will Do
 
-Follow the facilitator through one code review that automatically triggers a skill, then compare it with the same review without custom instructions.
+Use a natural prompt to trigger a code-review skill automatically.
+
+In this chapter, you will compare the skill-enabled review with the same review without custom instructions.
 
 ## Goal
 
 By the end of this chapter, you should be able to explain how Copilot matches a natural prompt to a skill and applies repeatable team instructions.
+
 ## CLI Commands for This Chapter
 
 | Command | Where to run it | Purpose |
@@ -24,52 +27,9 @@ By the end of this chapter, you should be able to explain how Copilot matches a 
 
 The specialist review in Chapter 04 showed that repeatable criteria improve consistency. Now the team will package that quality checklist as a skill that Copilot can discover from a natural request.
 
-## Real-World Analogy: Skills as Tool Attachments
+<img src="../assets/skills-power-tools-analogy.png" alt="Power tools analogy" width="300">
 
-Think of Copilot like a power tool. It works out of the box, but specialized attachments make it reliable for specific jobs.
-
-<img src="../assets/skills-power-tools-analogy.png" alt="Power tools analogy" width="650">
-
-In this chapter, we will:
-
-1. Find an available skill.
-2. Trigger it with a natural prompt.
-3. Confirm which skill Copilot used.
-4. Compare the result with a no-custom-instructions baseline.
-
-## How Skills Work
-
-Skills are task-specific instruction folders. Copilot checks your prompt, matches likely skills, and loads them automatically.
-
-Run `/skills list` to see built-in, project, and user skills. The bookstore example uses `.github/skills/code-checklist/SKILL.md`; Copilot can apply it automatically when a prompt matches its description.
-
-Example behavior:
-
-```bash
-Check books.py against our quality checklist
-# Copilot can auto-match a code-checklist skill
-
-Generate tests for the BookCollection class
-# Copilot can auto-match a pytest generation skill
-```
-
-Direct invocation is available when you want explicit control, but we will use automatic discovery in this exercise:
-
-```bash
-/code-checklist Review @samples/book-app-project/books.py
-```
-
-## Skills vs Agents vs MCP
-
-Use this quick mental model:
-
-<img src="../assets/skills-agents-mcp-comparison.png" alt="Skills agents MCP comparison" width="650">
-
-| Feature | What It Does | When to Use |
-|---|---|---|
-| Agents | Changes how Copilot reasons | You need specialized expertise across many tasks |
-| Skills | Adds task-specific instructions | You repeat the same type of checks often |
-| MCP | Connects external systems | You need live context from tools and services |
+A skill is a reusable set of instructions for a specific task. Copilot can match a natural prompt to a relevant skill, or you can invoke the skill directly when you want explicit control.
 
 ## Live Follow-Along
 
@@ -102,7 +62,7 @@ Find `code-checklist` in the list. It should describe Python code quality, bugs,
 Run this prompt exactly as shown. Do not type the skill name:
 
 ```text
-Check @samples/book-app-project/books.py for Python code quality, bugs, security issues, and best practices.
+Check @workshop/samples/book-app-project/books.py for Python code quality, bugs, security issues, and best practices.
 ```
 
 Look for a checklist organized into **Code Quality**, **Input Validation**, **Testing**, and **Summary**. These headings come from the skill instructions.
@@ -139,7 +99,7 @@ copilot --name=skills-baseline --no-custom-instructions
 Then run the exact same natural prompt:
 
 ```text
-Check @samples/book-app-project/books.py for Python code quality, bugs, security issues, and best practices.
+Check @workshop/samples/book-app-project/books.py for Python code quality, bugs, security issues, and best practices.
 ```
 
 This interactive baseline keeps the response visible in PowerShell. Do not use the skill name in the prompt.

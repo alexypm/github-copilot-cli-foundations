@@ -18,8 +18,8 @@ Either way, you're done when the Copilot CLI prompt is open in your repo and `/u
 Clone the repo you just created (the org and name you chose in the on-screen step) and step into it:
 
 ```bash
-gh repo clone <hackathon-org>/<your-repo-name>
-cd <your-repo-name>
+gh repo clone hackathon-green-bee-80/GitHub-Copilot-Foundations
+cd GitHub-Copilot-Foundations
 copilot
 ```
 
@@ -50,5 +50,7 @@ Wait for the container to build (about 2 minutes; it pre-installs Node 22 and Co
 curl -fsSL https://gh.io/copilot-install | sudo bash
 copilot
 ```
+
+<img src="../assets/image.png" alt="codespace" width="300">
 
 The codespace already runs as your private account, so no extra login is needed. Check that `/usage` responds, then continue to [01 - Setup and First Steps](01-setup-and-first-steps.md).

@@ -25,10 +25,6 @@ This is the short version of the course. It starts with a Copilot CLI tour, then
 - [04 - Agents and Custom Instructions](./chapters/04-agents-custom-instructions.md)
 - [05 - Skills](./chapters/05-skills.md)
 
-## Short Example
-
-If you want to see how the workshop is organized, open [Chapter 00](./chapters/00-quick-start.md) first. That page shows the short workshop style for the bookshop example, and the other chapter pages follow the same pattern.
-
 ## Goal
 
 The workshop helps participants follow the course quickly without reading the full chapter version first, while staying on the same local bookshop example throughout.

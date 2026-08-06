@@ -13,13 +13,11 @@ body:
       label: Which chapter is affected?
       options:
         - "00 - Quick Start"
-        - "01 - First Steps"
+        - "01 - Copilot CLI 101"
         - "02 - Context and Conversations"
         - "03 - Development Workflows"
-        - "04 - Create Specialized AI Assistants"
-        - "05 - Automate Repetitive Tasks"
-        - "06 - Connect to GitHub, Databases & APIs"
-        - "07 - Putting It All Together"
+        - "04 - Agents and Custom Instructions"
+        - "05 - Skills"
         - "Sample code (samples/)"
         - "Appendices"
         - "Other"

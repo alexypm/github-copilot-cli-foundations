@@ -4,50 +4,66 @@
 
 ## What You Will Do
 
-Show Copilot the right files and continue the same session instead of starting over.
+Investigate the bookstore code by adding file and folder context step by step.
 
-In this chapter, you will use @ file references, compare single-file and multi-file context, and continue one session with follow-up questions.
+In this chapter, you will compare single-file, multi-file, and directory context, then continue the conversation without starting over.
 
 ## Goal
 
-By the end of this chapter, you should know how to give Copilot useful context and keep a conversation going.
+By the end of this chapter, you should know how to investigate unfamiliar code, give Copilot useful repository context, and resume a conversation.
 ## CLI Commands for This Chapter
 
 | Command | Where to run it | Purpose |
 |---|---|---|
-| `copilot --name=context-demo` | Terminal | Start a named session |
+| `copilot --name=context-demo` | Terminal | Start a named context session |
 | `@<file-or-directory>` | Copilot prompt | Add file or directory context |
 | `/exit` | Copilot session | End the current session |
 | `copilot --continue` | Terminal | Resume the most recent session |
-| `copilot --resume=context-demo` | Terminal | Resume the named session |
-| `/memory on` | Copilot session | Enable saved memory |
-| `/memory show` | Copilot session | Show available memories |
-| `/memory off` | Copilot session | Disable saved memory |
+| `copilot --resume=context-demo` | Terminal | Resume the named context session |
 
-## Bookstore Use Case: Trace Invalid Book Data
+## Bookstore Use Case: Investigate the App
 
-Chapter 01 found a likely validation risk. Now you will gather enough context to confirm where user input enters the bookstore app, where books are saved, and where tests belong.
+The bookstore app runs, but you are new to its code. Your first assignment is to investigate how books are added and decide how to prevent invalid book data from being saved.
 
-Keep all prompts focused on `samples/book-app-project/`.
-
-<img src="../assets/context-window-visualization.png" alt="Context window visualization" width="650">
+Keep all work focused on `samples/book-app-project/`.
 
 ## Live Follow-Along
 
-### Step 1: Open One Session and Keep It
+### Step 1: Start the Investigation
 
 1. Start a named session: `copilot --name=context-demo`
+2. Keep this session open through the context exercises.
 
-### Step 2: Add Better Context Step by Step
+### Step 2: Build Context Step by Step
 
-1. Run this single-file prompt: `Explain what @samples/book-app-project/utils.py does.`
-2. Run this multi-file prompt: `Compare @samples/book-app-project/book_app.py and @samples/book-app-project/books.py for consistency.`
-3. Run this directory prompt: `Review all files in @samples/book-app-project/ for error handling issues.`
+1. Run this single-file prompt:
 
-> **Checkpoint:** Notice what changes when Copilot sees one file, two files, and the whole sample folder.
+	```text
+	Review @samples/book-app-project/books.py for bugs, quality issues, and missing validation.
+	```
+
+2. Run this multi-file prompt:
+
+	```text
+	Compare @samples/book-app-project/book_app.py and @samples/book-app-project/books.py. How do they work together?
+	```
+
+3. Run this directory prompt:
+
+	```text
+	Review @samples/book-app-project/ for error handling issues and trace how an empty book title could be saved.
+	```
+
+4. Ask:
+
+	```text
+	Which issue should I fix first if I only have 10 minutes?
+	```
+
+> **Checkpoint:** Notice how the answer becomes more specific as Copilot sees one file, two files, and the full sample folder. Do not change code yet.
 
 <details>
-<summary>See demo output (optional)</summary>
+<summary>See context demos (optional)</summary>
 
 <img src="../assets/context-file-demo.gif" alt="File context demo" width="650">
 
@@ -55,58 +71,77 @@ Keep all prompts focused on `samples/book-app-project/`.
 
 </details>
 
-### Step 3: Ask a Cross-File Question
+### Step 3: Continue the Conversation
 
-<img src="../assets/context-cross-file-intelligence.png" alt="Cross-file intelligence" width="650">
+1. Run:
 
-1. Run this cross-file prompt: `How do @samples/book-app-project/book_app.py and @samples/book-app-project/books.py work together, and what issue should we fix first?`
-2. In the same session, run: `Continue from the last answer and suggest the next step.`
+	```text
+	Continue from the last answer and explain the validation problem in simple terms.
+	```
 
-> **Checkpoint:** The answer should connect CLI input in `book_app.py` to storage behavior in `books.py`.
+2. Run:
 
-<details>
-<summary>See demo output (optional)</summary>
+	```text
+	Which files and tests should change to fix it?
+	```
 
-<img src="../assets/context-multi-turn-demo.gif" alt="Multi-turn demo" width="650">
+3. Run:
 
-</details>
+	```text
+	Summarize your recommended first fix in two sentences.
+	```
 
-### Step 4: Confirm the Validation Path
+> **Checkpoint:** Copilot should use the context already established in Step 2 without requiring you to repeat every file path.
 
-<img src="../assets/context-codebase-understanding.png" alt="Codebase understanding" width="650">
+### Step 4: Leave and Continue Later
 
-1. Run this prompt: `@samples/book-app-project/ In one paragraph, what does this app do and what are its biggest quality issues?`
-2. Run this follow-up: `Give me the first fix to make, and explain why in two sentences.`
+1. Exit with `/exit`, then run `copilot --continue`.
+2. Ask:
 
-3. Run: `Trace an empty book title from user input to saved data, and identify the files and tests that should change.`
+	```text
+	What was the first fix you recommended earlier?
+	```
 
-> **Checkpoint:** Save the recommended first fix. Chapter 03 will implement and test it.
+3. Exit with `/exit`, then run `copilot --resume=context-demo`.
+4. Ask:
 
-### Wrap Up: Leave and Continue Later
+	```text
+	Summarize what we discussed in this session so far.
+	```
 
-<img src="../assets/context-session-persistence.png" alt="Session persistence timeline" width="650">
+> **Checkpoint:** Confirm that both continuation methods preserve the conversation context.
 
-1. Exit with `/exit`, then run `copilot --continue`. This resumes the most recent session. Ask: `What was the first fix you recommended earlier?`
-2. Exit with `/exit`, then run `copilot --resume=context-demo`. This resumes the named session directly. Ask: `Summarize what we discussed in this session so far.`
-3. Bring your top issue into Chapter 03, where you run a full development workflow from review to ship.
+### Optional: Check Persistent Memory
 
-### Optional Demo: Check Persistent Memory
+1. Run `/memory on`.
+2. Ask:
 
-A session stores one conversation so you can resume it later. Persistent memory stores reusable facts and preferences that Copilot can apply across sessions. Memory can be associated with your user account or the current repository.
+	```text
+	Remember that I prefer pytest for Python tests in this workshop. Save this preference to memory.
+	```
 
-1. Start Copilot CLI: `copilot`.
-2. Run `/memory on` to make sure memory is enabled.
-3. Run this prompt: `Remember that I prefer pytest for Python tests in this workshop.`
-4. Run `/memory show`.
-5. In the output, find the saved pytest preference and check whether it is associated with your user account or this repository. The exact formatting may vary by Copilot CLI version.
-6. Run `/memory off` if you prefer each session to start without saved memories.
+3. Run `/memory show` to confirm that Memory is enabled. This command shows the status, not the saved preferences.
+4. Open [Copilot Memory settings](https://github.com/settings/copilot/memory) to view or delete stored preferences.
+5. Start another session and ask:
 
-> **If no details appear:** Confirm that `/memory on` succeeded, repeat the `Remember that...` prompt, and run `/memory show` again. Memory may not be available for every account.
->
-> **Note:** Use `/memory show` instead of looking for a local file. How memory is stored can vary by Copilot CLI version and account, while this command shows the memories available to your current session.
+	```text
+	Which Python test framework do I prefer?
+	```
+
+	Check whether Copilot recalls the preference.
+
+6. Run `/memory off` if you prefer sessions without saved memories.
+
+> **Checkpoint:** Copilot should confirm that it saved the pytest preference before you test recall in another session.
+
+Memory is in public preview. Availability and recall can vary by CLI version, account, and active billing entity.
+
+### Wrap Up
+
+Save the recommended first fix for Chapter 03, where you will implement and test it.
 
 ### What We Achieved Together
 
-We expanded from one file to multiple files and the full sample folder, traced an empty title from CLI input to saved data, and identified the source and test files involved. We also resumed the conversation without losing its context.
+We investigated the inherited app, expanded from one file to the full sample folder, traced the validation path, and resumed the conversation without losing context.
 
 Continue to Chapter 03, where we implement and test the validation change.

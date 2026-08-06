@@ -49,7 +49,11 @@ Start with a general prompt so you can compare it fairly against specialist outp
 
 This shows how role-specific instructions improve consistency and depth.
 
-1. Run: `Review @workshop/samples/book-app-project/books.py and @workshop/samples/book-app-project/tests/ for bugs and quality issues.`
+1. Run:
+
+	```text
+	Review @samples/book-app-project/books.py and @samples/book-app-project/tests/ for bugs and quality issues.
+	```
 
 > **Checkpoint:** Keep this response in the session. It is the baseline for the specialist comparison.
 
@@ -57,8 +61,17 @@ This shows how role-specific instructions improve consistency and depth.
 
 1. Run `/agent`.
 2. Select `python-reviewer`.
-3. Run the same prompt: `Review @workshop/samples/book-app-project/books.py and @workshop/samples/book-app-project/tests/ for bugs and quality issues.`
-4. Run: `Compare the generic review and python-reviewer review in a short table.`
+3. Run the same prompt:
+
+	```text
+	Review @samples/book-app-project/books.py and @samples/book-app-project/tests/ for bugs and quality issues.
+	```
+
+4. Run:
+
+	```text
+	Compare the generic review and python-reviewer review in a short table.
+	```
 
 > **Checkpoint:** Identify one criterion the specialist applied more consistently or explicitly.
 
@@ -75,7 +88,11 @@ This shows how role-specific instructions improve consistency and depth.
 
 After comparison, capture the good patterns as team guidance.
 
-Run: `Show a minimal project custom instruction that enforces concise, bug-first reviews, and explain where the team should save it.`
+Run:
+
+```text
+Show a minimal project custom instruction that enforces concise, bug-first reviews, and explain where the team should save it.
+```
 
 > **Checkpoint:** The answer should distinguish project instructions from an agent selected for a specialized task.
 
@@ -99,4 +116,8 @@ To demonstrate session continuity:
 
 1. Exit with `/exit`.
 2. Resume with `copilot --resume=agents-demo`.
-3. Ask: `Summarize when to use generic prompts vs specialist agents in three bullets.`
+3. Ask:
+
+	```text
+	Summarize when to use generic prompts vs specialist agents in three bullets.
+	```

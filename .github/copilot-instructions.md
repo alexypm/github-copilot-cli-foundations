@@ -62,7 +62,6 @@ Do not deviate from this structure when editing or adding chapter content.
 | Bug intentionally added to buggy samples | `samples/book-app-buggy/` or `samples/buggy-code/` only — do NOT update tests |
 | New skill added | `.github/skills/{skill-name}/SKILL.md`, `samples/skills/` (example copy), Chapter 05 |
 | New agent template added | `samples/agents/`, Chapter 04 |
-| New MCP config added | `samples/mcp-configs/`, Chapter 06 |
 | Glossary term introduced | `GLOSSARY.md` — add definition in alphabetical order |
 | npm scripts changed | `package.json`, `AGENTS.md` (build section) |
 | Devcontainer updated | `.devcontainer/devcontainer.json`, Chapter 00 (setup instructions) |

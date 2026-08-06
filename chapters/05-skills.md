@@ -62,7 +62,7 @@ Find `code-checklist` in the list. It should describe Python code quality, bugs,
 Run this prompt exactly as shown. Do not type the skill name:
 
 ```text
-Check @workshop/samples/book-app-project/books.py for Python code quality, bugs, security issues, and best practices.
+Check @samples/book-app-project/books.py for Python code quality, bugs, security issues, and best practices.
 ```
 
 Look for a checklist organized into **Code Quality**, **Input Validation**, **Testing**, and **Summary**. These headings come from the skill instructions.
@@ -99,7 +99,7 @@ copilot --name=skills-baseline --no-custom-instructions
 Then run the exact same natural prompt:
 
 ```text
-Check @workshop/samples/book-app-project/books.py for Python code quality, bugs, security issues, and best practices.
+Check @samples/book-app-project/books.py for Python code quality, bugs, security issues, and best practices.
 ```
 
 This interactive baseline keeps the response visible in PowerShell. Do not use the skill name in the prompt.
@@ -121,11 +121,14 @@ Return to Terminal 1:
 
 1. Exit with `/exit`.
 2. Resume with `copilot --resume=skills-demo`.
-3. Ask: `Summarize when to use a skill, when to use an agent, and when to use a plain prompt.`
-4. Move to Chapter 06 to extend this workflow with trusted external MCP tools.
+3. Ask:
+
+	```text
+	Summarize when to use a skill, when to use an agent, and when to use a plain prompt.
+	```
 
 ### What We Achieved Together
 
 We discovered the `code-checklist` skill, triggered it with a natural prompt, confirmed that Copilot used it, and compared its structured review with a no-custom-instructions baseline.
 
-Continue to Chapter 06, where we add trusted live repository context with MCP.
+You have completed the workshop.

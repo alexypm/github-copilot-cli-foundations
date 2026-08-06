@@ -11,13 +11,11 @@ import sys
 # Configuration
 CHAPTERS = {
     "00-quick-start": "Chapter 00: Quick Start",
-    "01-setup-and-first-steps": "Chapter 01: First Steps",
+    "01-cli-101": "Chapter 01: Copilot CLI 101",
     "02-context-conversations": "Chapter 02: Context and Conversations",
     "03-development-workflows": "Chapter 03: Development Workflows",
     "04-agents-custom-instructions": "Chapter 04: Agents and Custom Instructions",
     "05-skills": "Chapter 05: Skills System",
-    "06-mcp-servers": "Chapter 06: MCP Servers",
-    "07-putting-it-together": "Chapter 07: Putting It All Together",
 }
 
 # Get project root (parent of scripts folder)

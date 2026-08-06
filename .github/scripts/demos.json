@@ -18,19 +18,19 @@
       "prompt": "Say hello and tell me what you can help with"
     },
     {
-      "chapter": "01-setup-and-first-steps",
+      "chapter": "02-context-conversations",
       "name": "code-review-demo",
       "description": "Review a file for code quality issues and suggest improvements",
       "prompt": "Review @samples/book-app-project/book_app.py for code quality issues and suggest improvements"
     },
     {
-      "chapter": "01-setup-and-first-steps",
+      "chapter": "02-context-conversations",
       "name": "explain-code-demo",
       "description": "Explain what a Python file does in simple terms",
       "prompt": "Explain what @samples/book-app-project/books.py does in simple terms"
     },
     {
-      "chapter": "01-setup-and-first-steps",
+      "chapter": "02-context-conversations",
       "name": "generate-code-demo",
       "description": "Generate a Python function from a natural language description",
       "responseWait": 35,
@@ -112,23 +112,6 @@
       "description": "Copilot detects and triggers a matching skill",
       "responseWait": 120,
       "prompt": "Check the book collection code for quality issues"
-    },
-    {
-      "chapter": "06-mcp-servers",
-      "name": "mcp-status-demo",
-      "description": "Check connected MCP servers with /mcp show",
-      "responseWait": 25,
-      "prompt": "/mcp show"
-    },
-    {
-      "chapter": "06-mcp-servers",
-      "name": "mcp-workflow-demo",
-      "description": "Multi-step MCP workflow with issues and code analysis",
-      "prompts": [
-        "List open issues on this repository",
-        { "text": "@samples/book-app-project/books.py What code handles the search functionality?", "responseWait": 20 },
-        { "text": "Based on the code, suggest improvements for the search feature", "responseWait": 30 }
-      ]
     }
   ]
 }

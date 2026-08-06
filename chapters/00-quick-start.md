@@ -32,7 +32,7 @@ Use the right account. Today runs on the **private github.com account you provid
 /login
 ```
 
-Follow the device-code flow in the browser and sign in with the private account. Check that `/usage` responds. Then continue to [01 - Setup and First Steps](01-setup-and-first-steps.md).
+Follow the device-code flow in the browser and sign in with the private account. Check that `/usage` responds. Then continue to [01 - Copilot CLI 101](01-cli-101.md).
 
 ## 2 · GitHub Codespaces (Nothing to Install)
 
@@ -53,4 +53,4 @@ copilot
 
 <img src="../assets/image.png" alt="codespace" width="300">
 
-The codespace already runs as your private account, so no extra login is needed. Check that `/usage` responds, then continue to [01 - Setup and First Steps](01-setup-and-first-steps.md).
+The codespace already runs as your private account, so no extra login is needed. Check that `/usage` responds, then continue to [01 - Copilot CLI 101](01-cli-101.md).

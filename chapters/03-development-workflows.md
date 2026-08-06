@@ -57,9 +57,23 @@ This step uses the `@` symbol to reference a file so Copilot can read the exact 
 
 Starting with review gives you a clear list of issues so you can choose the most important fix first.
 
-1. Run: `Review @samples/book-app-project/books.py for bugs, quality issues, and missing validation.`
-2. Run: `Now create a markdown checklist grouped as Critical, High, Medium, Low.`
-3. Run: `Which one issue should I fix first and why?`
+1. Run:
+
+	```text
+	Review @samples/book-app-project/books.py for bugs, quality issues, and missing validation.
+	```
+
+2. Run:
+
+	```text
+	Now create a markdown checklist grouped as Critical, High, Medium, Low.
+	```
+
+3. Run:
+
+	```text
+	Which one issue should I fix first and why?
+	```
 
 > **Checkpoint:** Use missing validation for empty book titles as the shared first issue, even if Copilot reports other valid findings.
 
@@ -81,9 +95,23 @@ Use the issue from Step 2 to make one focused change. This guarantees that `/dif
 Plan first, then ask Copilot to edit only the validation path and its tests.
 
 1. Run: `/plan Add validation that prevents an empty or whitespace-only book title from being saved.`
-2. Run: `Implement that plan in @samples/book-app-project/books.py. Raise ValueError with a friendly message and do not change unrelated behavior.`
-3. Run: `Add focused pytest tests in @samples/book-app-project/tests/ for an empty title, a whitespace-only title, and a valid title.`
-4. Run: `Run the workshop book app tests and report the result.`
+2. Run:
+
+	```text
+	Implement that plan in @samples/book-app-project/books.py. Raise ValueError with a friendly message and do not change unrelated behavior.
+	```
+
+3. Run:
+
+	```text
+	Add focused pytest tests in @samples/book-app-project/tests/ for an empty title, a whitespace-only title, and a valid title.
+	```
+
+4. Run:
+
+	```text
+	Run the workshop book app tests and report the result.
+	```
 
 > **Checkpoint:** Copilot should have changed source and test files, and the focused tests should pass before you continue.
 
@@ -105,9 +133,23 @@ Now inspect the actual session changes and repair only a concrete issue found in
 Use `/diff` before asking for another code change.
 
 1. Run: `/diff`
-2. Run: `Review the current validation changes for bugs, unintended behavior changes, and missing edge cases. Report findings before editing.`
-3. If Copilot finds a real issue, run: `Fix only the highest-severity finding, then rerun the focused tests.`
-4. If there are no findings, run: `Explain why this change is safe in two sentences.`
+2. Run:
+
+	```text
+	Review the current validation changes for bugs, unintended behavior changes, and missing edge cases. Report findings before editing.
+	```
+
+3. If Copilot finds a real issue, run:
+
+	```text
+	Fix only the highest-severity finding, then rerun the focused tests.
+	```
+
+4. If there are no findings, run:
+
+	```text
+	Explain why this change is safe in two sentences.
+	```
 
 > **Checkpoint:** The diff should show both implementation and test changes. Tests should still pass after any repair.
 
@@ -128,9 +170,23 @@ After refactor and bug fix work, lock behavior with tests so regressions are cau
 
 Edge-case tests protect your refactor and bug fix work from regressions.
 
-1. Run: `Review @samples/book-app-project/tests/ for coverage of the new title validation behavior.`
-2. Run: `List any missing edge-case test without changing files.`
-3. If one is missing, run: `Add only the highest-value missing test and rerun the focused tests.`
+1. Run:
+
+	```text
+	Review @samples/book-app-project/tests/ for coverage of the new title validation behavior.
+	```
+
+2. Run:
+
+	```text
+	List any missing edge-case test without changing files.
+	```
+
+3. If one is missing, run:
+
+	```text
+	Add only the highest-value missing test and rerun the focused tests.
+	```
 
 > **Checkpoint:** Every new validation rule should have at least one focused pytest test.
 
@@ -153,9 +209,24 @@ Finish by turning technical work into clear reviewer communication.
 Good commit and PR text helps reviewers understand what changed and why.
 
 1. Run: `/diff` to review all changes made during this Copilot session.
-2. Run: `Summarize my current changes in one short paragraph.`
-3. Run: `Write a short commit message for the changes I made.`
-4. Run: `Draft a 4-bullet PR description with Summary, Changes, Testing, and Risks.`
+2. Run:
+
+	```text
+	Summarize my current changes in one short paragraph.
+	```
+
+3. Run:
+
+	```text
+	Write a short commit message for the changes I made.
+	```
+
+4. Run:
+
+	```text
+	Draft a 4-bullet PR description with Summary, Changes, Testing, and Risks.
+	```
+
 5. If you are on a feature branch with a GitHub remote, run: `/pr auto` to let Copilot choose the appropriate pull request action. Otherwise, stop after drafting the PR description.
 
 <details>
@@ -169,7 +240,12 @@ Good commit and PR text helps reviewers understand what changed and why.
 
 1. Exit with `/exit`
 2. Resume with `copilot --resume=workflow-demo`
-3. Ask: `Summarize the top recommendation from each workflow in a table.`
+3. Ask:
+
+	```text
+	Summarize the top recommendation from each workflow in a table.
+	```
+
 4. Take the same changed files into Chapter 04 to compare a general review with a specialist Python reviewer.
 
 ### What We Achieved Together

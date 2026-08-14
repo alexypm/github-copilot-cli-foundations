@@ -16,6 +16,7 @@ Beginner-friendly course teaching GitHub Copilot CLI. Educational content, not s
 | `samples/buggy-code/` | **Optional extra**: Security-focused buggy code (JS and Python) |
 | `samples/src/` | **Optional extra**: Legacy JS/React samples from earlier course version |
 | `appendices/` | Supplementary reference material |
+| `reports/` | Weekly AI news reports, dated and indexed |
 
 ## Do
 

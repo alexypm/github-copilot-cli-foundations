@@ -51,3 +51,18 @@ def test_remove_book_invalid():
     collection = BookCollection()
     result = collection.remove_book("Nonexistent Book")
     assert result is False
+
+def test_add_book_empty_title_raises():
+    collection = BookCollection()
+    with pytest.raises(ValueError):
+        collection.add_book("", "George Orwell", 1949)
+
+def test_add_book_whitespace_title_raises():
+    collection = BookCollection()
+    with pytest.raises(ValueError):
+        collection.add_book("   ", "George Orwell", 1949)
+
+def test_add_book_empty_author_raises():
+    collection = BookCollection()
+    with pytest.raises(ValueError):
+        collection.add_book("1984", "", 1949)
